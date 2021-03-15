@@ -1,0 +1,443 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="scripts/vue.js"></script>
+
+    <script src="scripts/axios.js"></script>
+    <link rel="stylesheet" href="scripts/font-awesome/css/font-awesome.min.css">
+    <!-- 引入组件库 -->
+    <link href="scripts/lib/theme-chalk/index.css" rel="stylesheet" />
+    <script src="scripts/lib/index.js"></script>
+    <!-- 滚动条样式 -->
+    <!-- 滚动条样式 -->
+    <script src="scripts/dist/vuescroll.js"></script>
+    <script src="scripts/dist/vuescroll-slide.js"></script>
+    <!-- 引入vuescroll-slide -->
+
+    <script src="scripts/dist/vuescroll-native.js"></script>
+    <!-- 引入vuescroll-native -->
+    <link href="scripts/dist/vuescroll.css" rel="stylesheet" />
+
+    <script src="svg/iconfont.js"></script>
+
+    <link href="svg/iconfont.css" rel="stylesheet" />
+    <title>后台管理</title>
+    <style>
+        /*  .main{
+                     width: 200px;
+                     height: 200px;
+                     position:absolute;
+                     top: 50%;
+                     left: 50%;
+                     background-color: blue;
+                     transform: translate(-50%,-50%);
+                 } */
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        html,
+        body,
+        #app {
+            width: 100%;
+            height: 100%;
+        }
+
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+
+        .layout {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            width: 100%;
+            height: 50px;
+            background: green;
+        }
+
+        .buttom {
+            width: 100%;
+            height: 20px;
+            background: blue;
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+            overflow: auto;
+        }
+
+        .aside {
+            height: 100%;
+            border-right: rgb(219, 215, 215) 1px solid;
+            overflow: auto;
+        }
+
+        .aside1 {
+            flex: 1;
+            /*   display: flex; */
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /*   .tabs{
+                 background: blue;
+                 height: 30px;
+
+
+                } */
+        .iframes {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .tabs,
+        .el-tabs {
+            width: 100%;
+            height: 100%;
+        }
+
+        .el-tabs--border-card > .el-tabs__content {
+            padding: 0px;
+        }
+
+        .el-tabs__header {
+            margin: 0px;
+        }
+
+        .el-tabs__content {
+            width: 100%;
+            height: calc(100% - 40px);
+            overflow: hidden;
+        }
+
+        .el-tab-pane {
+            width: 100%;
+            /*height: calc(100% - 10px);*/
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /*
+                     .el-tabs__header {
+                         margin: 0px;
+                     }
+              */
+        .el-menu-vertical-demo:not(.el-menu--collapse) {
+            width: 200px;
+            min-height: 500px;
+        }
+
+
+
+        .header > div > i {
+            font-size: 20px;
+        }
+
+        .logo {
+            line-height: 50px;
+            font-size: 22px;
+            color: white;
+            float: left;
+            text-align: center;
+        }
+
+        .logowidth1 {
+            width: 200px;
+        }
+
+        .logowidth2 {
+            width: 64px;
+        }
+
+        .copllse {
+            line-height: 50px;
+            float: left;
+        }
+
+        .login {
+            float: right;
+            line-height: 50px;
+            margin-right: 20px;
+        }
+
+        .login-box {
+            border: 1px solid #DCDFE6;
+            width: 350px;
+            padding: 35px 35px 15px 35px;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            position: absolute;
+            z-index: 9999;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background: rgb(2, 62, 66);
+        }
+
+        .login-title {
+            text-align: center;
+            margin: 0 auto 40px auto;
+            color: #f8f5f7;
+        }
+
+        /*.logincss {
+                         width: 100%;
+                         height: 100%;
+                         background-color: rgba(255, 255, 250,0.9);
+                         position: absolute;
+                         z-index: 9998;
+                     }*/
+
+        .el-dropdown-link {
+            cursor: pointer;
+            color: #409EFF;
+        }
+
+        .el-icon-arrow-down {
+            font-size: 12px;
+        }
+
+        .el-icon-user-solid {
+            color: white;
+        }
+
+        .el-menu-item:hover {
+            background-color: green;
+        }
+
+        .el-submenu [class^=fa], .el-submenu [class^=iconfont] {
+            vertical-align: middle;
+            margin-right: 5px;
+            width: 24px;
+            text-align: center;
+            font-size: 16px;
+            color: black;
+        }
+
+        .el-menu--vertical [class^=fa], .el-menu--vertical [class^=iconfont] {
+            vertical-align: middle;
+            margin-right: 5px;
+            width: 24px;
+            text-align: center;
+            font-size: 16px;
+            color: black;
+        }
+
+        .fa-home:before {
+            font-size: 16px;
+        }
+
+
+        .logincss {
+            background-image: url("./image/Picture1.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+            .logincss::after {
+                content: "";
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                background: inherit;
+                filter: blur(7px);
+                z-index: 2;
+            }
+
+        .Login {
+            width: 400px;
+            height: 400px;
+            padding: 50px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 20px;
+            margin-top: -200px;
+            margin-left: -200px;
+            box-sizing: border-box;
+            text-align: center;
+            z-index: 11;
+            /*background: inherit;*/
+        }
+
+        .SNJ {
+            position: absolute;
+            background: inherit;
+        }
+
+        .Login1 {
+            width: 380px;
+            height: 500px;
+            padding: 40px;
+            background-color: rgb(241, 252, 245);
+            /*   background-color:rgb(99, 192, 247); */
+            opacity: 0.9;
+            position: absolute;
+            top: 50%;
+            right: 5%;
+            border-radius: 30px;
+            margin-top: -250px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /*.logo{
+
+          width: 250px;
+           height: 50px;
+           position:absolute;
+
+          background-image:url("./image/");
+          background-repeat: no-repeat;
+               background-size: contain;
+        }*/
+        .vision {
+            width: 550px;
+            height: 40px;
+            position: absolute;
+            font-size: 25px;
+            font-family: "微软雅黑";
+            top: 50%;
+            left: 5%;
+            margin-top: -200px;
+        }
+
+        .vision1 {
+            width: 750px;
+            height: 440px;
+            position: absolute;
+            font-size: 35px;
+            font-family: "微软雅黑";
+            top: 50%;
+            left: 5%;
+            margin-top: -220px;
+        }
+
+        p > strong {
+            color: green;
+        }
+
+        .el-form-item {
+            margin-top: 50px;
+        }
+
+        .el-input i {
+            color: green;
+            font-size: 20px;
+        }
+
+        .el-input {
+            margin-top: 25px;
+        }
+
+        .el-submenu__title {
+            background-color: #f5f7fa;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <div id="app">
+
+        <el-table :data="dates" size="mini"
+                  border
+                  style="margin-top:15px;">
+            <el-table-column prop="updateTime"
+                             label="ID">
+            </el-table-column>
+          
+         
+
+        </el-table>
+
+
+    </div>
+    <script>
+
+
+
+
+        var v = new Vue({
+            el: "#app",
+            data: {
+              
+                dates:[]
+
+            },
+            created() {
+                //this.Collapse();
+
+                axios({
+                    method: 'post',
+                    url: '../User/Dates',
+                    data: this.form
+
+                }).then(res=> {
+                    console.log(res.data);
+
+                    this.dates = res.data.main
+
+
+                 
+
+
+
+
+                })
+
+
+           
+
+
+
+            },
+            methods: {
+
+     
+
+        
+         
+
+
+
+
+
+
+
+
+            }
+
+        })
+    </script>
+</body>
+
+
+</html>

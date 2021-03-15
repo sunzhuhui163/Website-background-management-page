@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4DC9A372-F5CA-46A5-9E0A-DDD526FE313F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NeddleFinishGood</RootNamespace>
+    <AssemblyName>NeddleFinishGood</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Home.html" />
+    <Content Include="image\back.jpg" />
+    <Content Include="image\Picture1.png" />
+    <Content Include="image\SchaefflerLogo.png" />
+    <Content Include="image\sm1.png" />
+    <Content Include="image\sm2.png" />
+    <Content Include="image\sm3.png" />
+    <Content Include="image\SNJ.png" />
+    <Content Include="image\snj11.jpg" />
+    <Content Include="index.html" />
+    <Content Include="index12.html" />
+    <Content Include="scripts\ai.0.22.9-build00167.js" />
+    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="scripts\axios.js" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\css\bootstrap-grid.css" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\css\bootstrap-grid.min.css" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\css\bootstrap-reboot.css" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\css\bootstrap-reboot.min.css" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\css\bootstrap.css" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\css\bootstrap.min.css" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\js\bootstrap.bundle.js" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\js\bootstrap.bundle.min.js" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\js\bootstrap.js" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\js\bootstrap.min.js" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\echarts.all.js" />
+    <Content Include="scripts\echarts.min.js" />
+    <Content Include="scripts\font-awesome\css\font-awesome.css" />
+    <Content Include="scripts\font-awesome\css\font-awesome.min.css" />
+    <Content Include="scripts\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="scripts\font-awesome\HELP-US-OUT.txt" />
+    <None Include="scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="scripts\jquery-1.10.2.js" />
+    <Content Include="scripts\jquery-1.10.2.min.js" />
+    <Content Include="scripts\jquery-1.10.2.min.map" />
+    <None Include="scripts\jquery.validate-vsdoc.js" />
+    <Content Include="scripts\jquery.min.js" />
+    <Content Include="scripts\jquery.PrintArea.js" />
+    <Content Include="scripts\jquery.validate.js" />
+    <Content Include="scripts\jquery.validate.min.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="scripts\layer\layer.js" />
+    <Content Include="scripts\layer\mobile\layer.js" />
+    <Content Include="scripts\layer\mobile\need\layer.css" />
+    <Content Include="scripts\layer\theme\default\icon-ext.png" />
+    <Content Include="scripts\layer\theme\default\icon.png" />
+    <Content Include="scripts\layer\theme\default\layer.css" />
+    <Content Include="scripts\layer\theme\default\loading-0.gif" />
+    <Content Include="scripts\layer\theme\default\loading-1.gif" />
+    <Content Include="scripts\layer\theme\default\loading-2.gif" />
+    <Content Include="scripts\lib\alert.js" />
+    <Content Include="scripts\lib\aside.js" />
+    <Content Include="scripts\lib\autocomplete.js" />
+    <Content Include="scripts\lib\avatar.js" />
+    <Content Include="scripts\lib\backtop.js" />
+    <Content Include="scripts\lib\badge.js" />
+    <Content Include="scripts\lib\breadcrumb-item.js" />
+    <Content Include="scripts\lib\breadcrumb.js" />
+    <Content Include="scripts\lib\button-group.js" />
+    <Content Include="scripts\lib\button.js" />
+    <Content Include="scripts\lib\calendar.js" />
+    <Content Include="scripts\lib\card.js" />
+    <Content Include="scripts\lib\carousel-item.js" />
+    <Content Include="scripts\lib\carousel.js" />
+    <Content Include="scripts\lib\cascader-panel.js" />
+    <Content Include="scripts\lib\cascader.js" />
+    <Content Include="scripts\lib\checkbox-button.js" />
+    <Content Include="scripts\lib\checkbox-group.js" />
+    <Content Include="scripts\lib\checkbox.js" />
+    <Content Include="scripts\lib\col.js" />
+    <Content Include="scripts\lib\collapse-item.js" />
+    <Content Include="scripts\lib\collapse.js" />
+    <Content Include="scripts\lib\color-picker.js" />
+    <Content Include="scripts\lib\container.js" />
+    <Content Include="scripts\lib\date-picker.js" />
+    <Content Include="scripts\lib\dialog.js" />
+    <Content Include="scripts\lib\directives\mousewheel.js" />
+    <Content Include="scripts\lib\directives\repeat-click.js" />
+    <Content Include="scripts\lib\divider.js" />
+    <Content Include="scripts\lib\drawer.js" />
+    <Content Include="scripts\lib\dropdown-item.js" />
+    <Content Include="scripts\lib\dropdown-menu.js" />
+    <Content Include="scripts\lib\dropdown.js" />
+    <Content Include="scripts\lib\element-ui.common.js" />
+    <Content Include="scripts\lib\footer.js" />
+    <Content Include="scripts\lib\form-item.js" />
+    <Content Include="scripts\lib\form.js" />
+    <Content Include="scripts\lib\header.js" />
+    <Content Include="scripts\lib\icon.js" />
+    <Content Include="scripts\lib\image.js" />
+    <Content Include="scripts\lib\index.js" />
+    <Content Include="scripts\lib\infinite-scroll.js" />
+    <Content Include="scripts\lib\input-number.js" />
+    <Content Include="scripts\lib\input.js" />
+    <Content Include="scripts\lib\link.js" />
+    <Content Include="scripts\lib\loading.js" />
+    <Content Include="scripts\lib\locale\format.js" />
+    <Content Include="scripts\lib\locale\index.js" />
+    <Content Include="scripts\lib\locale\lang\af-ZA.js" />
+    <Content Include="scripts\lib\locale\lang\ar.js" />
+    <Content Include="scripts\lib\locale\lang\bg.js" />
+    <Content Include="scripts\lib\locale\lang\ca.js" />
+    <Content Include="scripts\lib\locale\lang\cs-CZ.js" />
+    <Content Include="scripts\lib\locale\lang\da.js" />
+    <Content Include="scripts\lib\locale\lang\de.js" />
+    <Content Include="scripts\lib\locale\lang\ee.js" />
+    <Content Include="scripts\lib\locale\lang\el.js" />
+    <Content Include="scripts\lib\locale\lang\en.js" />
+    <Content Include="scripts\lib\locale\lang\eo.js" />
+    <Content Include="scripts\lib\locale\lang\es.js" />
+    <Content Include="scripts\lib\locale\lang\eu.js" />
+    <Content Include="scripts\lib\locale\lang\fa.js" />
+    <Content Include="scripts\lib\locale\lang\fi.js" />
+    <Content Include="scripts\lib\locale\lang\fr.js" />
+    <Content Include="scripts\lib\locale\lang\he.js" />
+    <Content Include="scripts\lib\locale\lang\hr.js" />
+    <Content Include="scripts\lib\locale\lang\hu.js" />
+    <Content Include="scripts\lib\locale\lang\hy-AM.js" />
+    <Content Include="scripts\lib\locale\lang\id.js" />
+    <Content Include="scripts\lib\locale\lang\it.js" />
+    <Content Include="scripts\lib\locale\lang\ja.js" />
+    <Content Include="scripts\lib\locale\lang\kg.js" />
+    <Content Include="scripts\lib\locale\lang\km.js" />
+    <Content Include="scripts\lib\locale\lang\ko.js" />
+    <Content Include="scripts\lib\locale\lang\ku.js" />
+    <Content Include="scripts\lib\locale\lang\kz.js" />
+    <Content Include="scripts\lib\locale\lang\lt.js" />
+    <Content Include="scripts\lib\locale\lang\lv.js" />
+    <Content Include="scripts\lib\locale\lang\mn.js" />
+    <Content Include="scripts\lib\locale\lang\nb-NO.js" />
+    <Content Include="scripts\lib\locale\lang\nl.js" />
+    <Content Include="scripts\lib\locale\lang\pl.js" />
+    <Content Include="scripts\lib\locale\lang\pt-br.js" />
+    <Content Include="scripts\lib\locale\lang\pt.js" />
+    <Content Include="scripts\lib\locale\lang\ro.js" />
+    <Content Include="scripts\lib\locale\lang\ru-RU.js" />
+    <Content Include="scripts\lib\locale\lang\sk.js" />
+    <Content Include="scripts\lib\locale\lang\sl.js" />
+    <Content Include="scripts\lib\locale\lang\sr.js" />
+    <Content Include="scripts\lib\locale\lang\sv-SE.js" />
+    <Content Include="scripts\lib\locale\lang\ta.js" />
+    <Content Include="scripts\lib\locale\lang\th.js" />
+    <Content Include="scripts\lib\locale\lang\tk.js" />
+    <Content Include="scripts\lib\locale\lang\tr-TR.js" />
+    <Content Include="scripts\lib\locale\lang\ua.js" />
+    <Content Include="scripts\lib\locale\lang\ug-CN.js" />
+    <Content Include="scripts\lib\locale\lang\uz-UZ.js" />
+    <Content Include="scripts\lib\locale\lang\vi.js" />
+    <Content Include="scripts\lib\locale\lang\zh-CN.js" />
+    <Content Include="scripts\lib\locale\lang\zh-TW.js" />
+    <Content Include="scripts\lib\main.js" />
+    <Content Include="scripts\lib\menu-item-group.js" />
+    <Content Include="scripts\lib\menu-item.js" />
+    <Content Include="scripts\lib\menu.js" />
+    <Content Include="scripts\lib\message-box.js" />
+    <Content Include="scripts\lib\message.js" />
+    <Content Include="scripts\lib\mixins\emitter.js" />
+    <Content Include="scripts\lib\mixins\focus.js" />
+    <Content Include="scripts\lib\mixins\locale.js" />
+    <Content Include="scripts\lib\mixins\migrating.js" />
+    <Content Include="scripts\lib\notification.js" />
+    <Content Include="scripts\lib\option-group.js" />
+    <Content Include="scripts\lib\option.js" />
+    <Content Include="scripts\lib\page-header.js" />
+    <Content Include="scripts\lib\pagination.js" />
+    <Content Include="scripts\lib\popover.js" />
+    <Content Include="scripts\lib\progress.js" />
+    <Content Include="scripts\lib\radio-button.js" />
+    <Content Include="scripts\lib\radio-group.js" />
+    <Content Include="scripts\lib\radio.js" />
+    <Content Include="scripts\lib\rate.js" />
+    <Content Include="scripts\lib\row.js" />
+    <Content Include="scripts\lib\scrollbar.js" />
+    <Content Include="scripts\lib\select.js" />
+    <Content Include="scripts\lib\slider.js" />
+    <Content Include="scripts\lib\spinner.js" />
+    <Content Include="scripts\lib\step.js" />
+    <Content Include="scripts\lib\steps.js" />
+    <Content Include="scripts\lib\submenu.js" />
+    <Content Include="scripts\lib\switch.js" />
+    <Content Include="scripts\lib\tab-pane.js" />
+    <Content Include="scripts\lib\table-column.js" />
+    <Content Include="scripts\lib\table.js" />
+    <Content Include="scripts\lib\tabs.js" />
+    <Content Include="scripts\lib\tag.js" />
+    <Content Include="scripts\lib\theme-chalk\alert.css" />
+    <Content Include="scripts\lib\theme-chalk\aside.css" />
+    <Content Include="scripts\lib\theme-chalk\autocomplete.css" />
+    <Content Include="scripts\lib\theme-chalk\avatar.css" />
+    <Content Include="scripts\lib\theme-chalk\backtop.css" />
+    <Content Include="scripts\lib\theme-chalk\badge.css" />
+    <Content Include="scripts\lib\theme-chalk\base.css" />
+    <Content Include="scripts\lib\theme-chalk\breadcrumb-item.css" />
+    <Content Include="scripts\lib\theme-chalk\breadcrumb.css" />
+    <Content Include="scripts\lib\theme-chalk\button-group.css" />
+    <Content Include="scripts\lib\theme-chalk\button.css" />
+    <Content Include="scripts\lib\theme-chalk\calendar.css" />
+    <Content Include="scripts\lib\theme-chalk\card.css" />
+    <Content Include="scripts\lib\theme-chalk\carousel-item.css" />
+    <Content Include="scripts\lib\theme-chalk\carousel.css" />
+    <Content Include="scripts\lib\theme-chalk\cascader-panel.css" />
+    <Content Include="scripts\lib\theme-chalk\cascader.css" />
+    <Content Include="scripts\lib\theme-chalk\checkbox-button.css" />
+    <Content Include="scripts\lib\theme-chalk\checkbox-group.css" />
+    <Content Include="scripts\lib\theme-chalk\checkbox.css" />
+    <Content Include="scripts\lib\theme-chalk\col.css" />
+    <Content Include="scripts\lib\theme-chalk\collapse-item.css" />
+    <Content Include="scripts\lib\theme-chalk\collapse.css" />
+    <Content Include="scripts\lib\theme-chalk\color-picker.css" />
+    <Content Include="scripts\lib\theme-chalk\container.css" />
+    <Content Include="scripts\lib\theme-chalk\date-picker.css" />
+    <Content Include="scripts\lib\theme-chalk\dialog.css" />
+    <Content Include="scripts\lib\theme-chalk\display.css" />
+    <Content Include="scripts\lib\theme-chalk\divider.css" />
+    <Content Include="scripts\lib\theme-chalk\drawer.css" />
+    <Content Include="scripts\lib\theme-chalk\dropdown-item.css" />
+    <Content Include="scripts\lib\theme-chalk\dropdown-menu.css" />
+    <Content Include="scripts\lib\theme-chalk\dropdown.css" />
+    <Content Include="scripts\lib\theme-chalk\footer.css" />
+    <Content Include="scripts\lib\theme-chalk\form-item.css" />
+    <Content Include="scripts\lib\theme-chalk\form.css" />
+    <Content Include="scripts\lib\theme-chalk\header.css" />
+    <Content Include="scripts\lib\theme-chalk\icon.css" />
+    <Content Include="scripts\lib\theme-chalk\image.css" />
+    <Content Include="scripts\lib\theme-chalk\index.css" />
+    <Content Include="scripts\lib\theme-chalk\infinite-scroll.css" />
+    <Content Include="scripts\lib\theme-chalk\infiniteScroll.css" />
+    <Content Include="scripts\lib\theme-chalk\input-number.css" />
+    <Content Include="scripts\lib\theme-chalk\input.css" />
+    <Content Include="scripts\lib\theme-chalk\link.css" />
+    <Content Include="scripts\lib\theme-chalk\loading.css" />
+    <Content Include="scripts\lib\theme-chalk\main.css" />
+    <Content Include="scripts\lib\theme-chalk\menu-item-group.css" />
+    <Content Include="scripts\lib\theme-chalk\menu-item.css" />
+    <Content Include="scripts\lib\theme-chalk\menu.css" />
+    <Content Include="scripts\lib\theme-chalk\message-box.css" />
+    <Content Include="scripts\lib\theme-chalk\message.css" />
+    <Content Include="scripts\lib\theme-chalk\notification.css" />
+    <Content Include="scripts\lib\theme-chalk\option-group.css" />
+    <Content Include="scripts\lib\theme-chalk\option.css" />
+    <Content Include="scripts\lib\theme-chalk\page-header.css" />
+    <Content Include="scripts\lib\theme-chalk\pagination.css" />
+    <Content Include="scripts\lib\theme-chalk\popover.css" />
+    <Content Include="scripts\lib\theme-chalk\popper.css" />
+    <Content Include="scripts\lib\theme-chalk\progress.css" />
+    <Content Include="scripts\lib\theme-chalk\radio-button.css" />
+    <Content Include="scripts\lib\theme-chalk\radio-group.css" />
+    <Content Include="scripts\lib\theme-chalk\radio.css" />
+    <Content Include="scripts\lib\theme-chalk\rate.css" />
+    <Content Include="scripts\lib\theme-chalk\reset.css" />
+    <Content Include="scripts\lib\theme-chalk\row.css" />
+    <Content Include="scripts\lib\theme-chalk\scrollbar.css" />
+    <Content Include="scripts\lib\theme-chalk\select-dropdown.css" />
+    <Content Include="scripts\lib\theme-chalk\select.css" />
+    <Content Include="scripts\lib\theme-chalk\slider.css" />
+    <Content Include="scripts\lib\theme-chalk\spinner.css" />
+    <Content Include="scripts\lib\theme-chalk\step.css" />
+    <Content Include="scripts\lib\theme-chalk\steps.css" />
+    <Content Include="scripts\lib\theme-chalk\submenu.css" />
+    <Content Include="scripts\lib\theme-chalk\switch.css" />
+    <Content Include="scripts\lib\theme-chalk\tab-pane.css" />
+    <Content Include="scripts\lib\theme-chalk\table-column.css" />
+    <Content Include="scripts\lib\theme-chalk\table.css" />
+    <Content Include="scripts\lib\theme-chalk\tabs.css" />
+    <Content Include="scripts\lib\theme-chalk\tag.css" />
+    <Content Include="scripts\lib\theme-chalk\time-picker.css" />
+    <Content Include="scripts\lib\theme-chalk\time-select.css" />
+    <Content Include="scripts\lib\theme-chalk\timeline-item.css" />
+    <Content Include="scripts\lib\theme-chalk\timeline.css" />
+    <Content Include="scripts\lib\theme-chalk\tooltip.css" />
+    <Content Include="scripts\lib\theme-chalk\transfer.css" />
+    <Content Include="scripts\lib\theme-chalk\tree.css" />
+    <Content Include="scripts\lib\theme-chalk\upload.css" />
+    <Content Include="scripts\lib\time-picker.js" />
+    <Content Include="scripts\lib\time-select.js" />
+    <Content Include="scripts\lib\timeline-item.js" />
+    <Content Include="scripts\lib\timeline.js" />
+    <Content Include="scripts\lib\tooltip.js" />
+    <Content Include="scripts\lib\transfer.js" />
+    <Content Include="scripts\lib\transitions\collapse-transition.js" />
+    <Content Include="scripts\lib\tree.js" />
+    <Content Include="scripts\lib\umd\locale\af-ZA.js" />
+    <Content Include="scripts\lib\umd\locale\ar.js" />
+    <Content Include="scripts\lib\umd\locale\bg.js" />
+    <Content Include="scripts\lib\umd\locale\ca.js" />
+    <Content Include="scripts\lib\umd\locale\cs-CZ.js" />
+    <Content Include="scripts\lib\umd\locale\da.js" />
+    <Content Include="scripts\lib\umd\locale\de.js" />
+    <Content Include="scripts\lib\umd\locale\ee.js" />
+    <Content Include="scripts\lib\umd\locale\el.js" />
+    <Content Include="scripts\lib\umd\locale\en.js" />
+    <Content Include="scripts\lib\umd\locale\eo.js" />
+    <Content Include="scripts\lib\umd\locale\es.js" />
+    <Content Include="scripts\lib\umd\locale\eu.js" />
+    <Content Include="scripts\lib\umd\locale\fa.js" />
+    <Content Include="scripts\lib\umd\locale\fi.js" />
+    <Content Include="scripts\lib\umd\locale\fr.js" />
+    <Content Include="scripts\lib\umd\locale\he.js" />
+    <Content Include="scripts\lib\umd\locale\hr.js" />
+    <Content Include="scripts\lib\umd\locale\hu.js" />
+    <Content Include="scripts\lib\umd\locale\hy-AM.js" />
+    <Content Include="scripts\lib\umd\locale\id.js" />
+    <Content Include="scripts\lib\umd\locale\it.js" />
+    <Content Include="scripts\lib\umd\locale\ja.js" />
+    <Content Include="scripts\lib\umd\locale\kg.js" />
+    <Content Include="scripts\lib\umd\locale\km.js" />
+    <Content Include="scripts\lib\umd\locale\ko.js" />
+    <Content Include="scripts\lib\umd\locale\ku.js" />
+    <Content Include="scripts\lib\umd\locale\kz.js" />
+    <Content Include="scripts\lib\umd\locale\lt.js" />
+    <Content Include="scripts\lib\umd\locale\lv.js" />
+    <Content Include="scripts\lib\umd\locale\mn.js" />
+    <Content Include="scripts\lib\umd\locale\nb-NO.js" />
+    <Content Include="scripts\lib\umd\locale\nl.js" />
+    <Content Include="scripts\lib\umd\locale\pl.js" />
+    <Content Include="scripts\lib\umd\locale\pt-br.js" />
+    <Content Include="scripts\lib\umd\locale\pt.js" />
+    <Content Include="scripts\lib\umd\locale\ro.js" />
+    <Content Include="scripts\lib\umd\locale\ru-RU.js" />
+    <Content Include="scripts\lib\umd\locale\sk.js" />
+    <Content Include="scripts\lib\umd\locale\sl.js" />
+    <Content Include="scripts\lib\umd\locale\sr.js" />
+    <Content Include="scripts\lib\umd\locale\sv-SE.js" />
+    <Content Include="scripts\lib\umd\locale\ta.js" />
+    <Content Include="scripts\lib\umd\locale\th.js" />
+    <Content Include="scripts\lib\umd\locale\tk.js" />
+    <Content Include="scripts\lib\umd\locale\tr-TR.js" />
+    <Content Include="scripts\lib\umd\locale\ua.js" />
+    <Content Include="scripts\lib\umd\locale\ug-CN.js" />
+    <Content Include="scripts\lib\umd\locale\uz-UZ.js" />
+    <Content Include="scripts\lib\umd\locale\vi.js" />
+    <Content Include="scripts\lib\umd\locale\zh-CN.js" />
+    <Content Include="scripts\lib\umd\locale\zh-TW.js" />
+    <Content Include="scripts\lib\upload.js" />
+    <Content Include="scripts\lib\utils\after-leave.js" />
+    <Content Include="scripts\lib\utils\aria-dialog.js" />
+    <Content Include="scripts\lib\utils\aria-utils.js" />
+    <Content Include="scripts\lib\utils\clickoutside.js" />
+    <Content Include="scripts\lib\utils\date-util.js" />
+    <Content Include="scripts\lib\utils\date.js" />
+    <Content Include="scripts\lib\utils\dom.js" />
+    <Content Include="scripts\lib\utils\menu\aria-menubar.js" />
+    <Content Include="scripts\lib\utils\menu\aria-menuitem.js" />
+    <Content Include="scripts\lib\utils\menu\aria-submenu.js" />
+    <Content Include="scripts\lib\utils\merge.js" />
+    <Content Include="scripts\lib\utils\popper.js" />
+    <Content Include="scripts\lib\utils\popup\index.js" />
+    <Content Include="scripts\lib\utils\popup\popup-manager.js" />
+    <Content Include="scripts\lib\utils\resize-event.js" />
+    <Content Include="scripts\lib\utils\scroll-into-view.js" />
+    <Content Include="scripts\lib\utils\scrollbar-width.js" />
+    <Content Include="scripts\lib\utils\shared.js" />
+    <Content Include="scripts\lib\utils\types.js" />
+    <Content Include="scripts\lib\utils\util.js" />
+    <Content Include="scripts\lib\utils\vdom.js" />
+    <Content Include="scripts\lib\utils\vue-popper.js" />
+    <Content Include="scripts\modernizr-2.6.2.js" />
+    <Content Include="scripts\qrcode.min.js" />
+    <Content Include="scripts\vue-resource.js" />
+    <Content Include="scripts\vue-resource.min.js" />
+    <Content Include="scripts\vue.js" />
+    <Content Include="scripts\vue.min.js" />
+    <Content Include="scripts\xlsx.full.min.js" />
+    <Content Include="View\MenuAdd.html" />
+    <Content Include="View\UserManagerment.html" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SqlHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Good\Index.cshtml" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\css\bootstrap-grid.css.map" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\css\bootstrap-reboot.css.map" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\css\bootstrap.css.map" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\css\bootstrap.min.css.map" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\js\bootstrap.bundle.js.map" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\js\bootstrap.js.map" />
+    <Content Include="scripts\bootstrap-4.0.0-dist\js\bootstrap.min.js.map" />
+    <Content Include="scripts\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="scripts\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="scripts\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="scripts\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="scripts\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="scripts\font-awesome\less\animated.less" />
+    <Content Include="scripts\font-awesome\less\bordered-pulled.less" />
+    <Content Include="scripts\font-awesome\less\core.less" />
+    <Content Include="scripts\font-awesome\less\fixed-width.less" />
+    <Content Include="scripts\font-awesome\less\font-awesome.less" />
+    <Content Include="scripts\font-awesome\less\icons.less" />
+    <Content Include="scripts\font-awesome\less\larger.less" />
+    <Content Include="scripts\font-awesome\less\list.less" />
+    <Content Include="scripts\font-awesome\less\mixins.less" />
+    <Content Include="scripts\font-awesome\less\path.less" />
+    <Content Include="scripts\font-awesome\less\rotated-flipped.less" />
+    <Content Include="scripts\font-awesome\less\screen-reader.less" />
+    <Content Include="scripts\font-awesome\less\stacked.less" />
+    <Content Include="scripts\font-awesome\less\variables.less" />
+    <Content Include="scripts\font-awesome\scss\font-awesome.scss" />
+    <Content Include="scripts\font-awesome\scss\_animated.scss" />
+    <Content Include="scripts\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="scripts\font-awesome\scss\_core.scss" />
+    <Content Include="scripts\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="scripts\font-awesome\scss\_icons.scss" />
+    <Content Include="scripts\font-awesome\scss\_larger.scss" />
+    <Content Include="scripts\font-awesome\scss\_list.scss" />
+    <Content Include="scripts\font-awesome\scss\_mixins.scss" />
+    <Content Include="scripts\font-awesome\scss\_path.scss" />
+    <Content Include="scripts\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="scripts\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="scripts\font-awesome\scss\_stacked.scss" />
+    <Content Include="scripts\font-awesome\scss\_variables.scss" />
+    <Content Include="scripts\lib\theme-chalk\fonts\element-icons.ttf" />
+    <Content Include="scripts\lib\theme-chalk\fonts\element-icons.woff" />
+    <Content Include="scripts\axios.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="scripts\dist\" />
+    <Folder Include="svg\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53978</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53978/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

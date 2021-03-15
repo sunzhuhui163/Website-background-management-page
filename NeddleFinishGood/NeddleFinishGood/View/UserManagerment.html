@@ -1,0 +1,426 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../scripts/vue.js"></script>
+
+    <script src="../scripts/axios.js"></script>
+    <link rel="stylesheet" href="../scripts/font-awesome/css/font-awesome.min.css">
+    <!-- 引入组件库 -->
+    <link href="../scripts/lib/theme-chalk/index.css" rel="stylesheet" />
+    <script src="../scripts/lib/index.js"></script>
+    <!-- 滚动条样式 -->
+
+    <link href="../scripts/bootstrap-4.0.0-dist/css/bootstrap.css" rel="stylesheet" />
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        html,
+        body,
+        #app {
+            width: 100%;
+            height: 100%;
+        }
+
+        .table td {
+            padding: 0.25rem;
+            font-size: 12px;
+        }
+
+        #app {
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .table tbody tr td {
+            vertical-align: middle;
+        }
+
+        .left {
+            width: 48%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 12px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .right {
+            width: 48%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 12px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .bars {
+            border-top: 1px green solid;
+            width: 100%;
+        }
+
+            .bars > div {
+                display: inline-block;
+            }
+
+        .el-table th {
+        }
+
+        .el-table thead {
+            color: black;
+        }
+
+        .headerBar {
+            background-color: #F5F7FA;
+        }
+
+        .mainbar {
+            width: 100%;
+            flex: 1;
+            overflow: auto;
+        }
+
+        .el-transfer {
+            height: 85%;
+            width: 500px;
+            margin: auto;
+        }
+
+        .el-transfer-panel__body, .el-transfer-panel__list {
+            height: 350px;
+            border: 1px green solid;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="app">
+
+        <div class="left">
+            <div class="headerBar">
+                <h3>用户表</h3>
+            </div>
+
+            <div class="mainbar">
+                <el-table ref="singleTable"
+                          :data="users"
+                          highlight-current-row
+                          @current-change="handleCurrentChange"
+                          style="width: 100%" size="mini">
+                    <el-table-column type="index">
+                    </el-table-column>
+                    <el-table-column property="username"
+                                     label="用户名">
+                    </el-table-column>
+                    <el-table-column property="Dept"
+                                     label="权限">
+                    </el-table-column>
+                    <el-table-column property="Email"
+                                     label="邮箱">
+                    </el-table-column>
+                </el-table>
+
+
+            </div>
+
+
+            <div class="bars">
+                <div>
+                    <el-button icon="el-icon-circle-plus" size="mini" @click="addUser">新增</el-button>
+                    <el-button icon="el-icon-edit" size="mini" @click="changeUser">修改</el-button>
+                    <el-button icon="el-icon-delete" size="mini" @click="deleteUser">删除</el-button>
+                </div>
+
+                <div style="margin-left:20px">
+                    <el-input placeholder="请输入用户名" v-model="input3" class="input-with-select" size="mini">
+                        <el-button slot="append" icon="el-icon-search" size="mini" @click="seachUser"></el-button>
+                    </el-input>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="right">
+            <div class="headerBar">
+                <h3>权限表</h3>
+            </div>
+
+            <div class="mainbar">
+                <h3 v-text="'用户名： '+userinfo.username" style="text-align:center"></h3>
+                <el-transfer v-model="value" :data="permission" :titles="['权限','已有权限']" @change="change"></el-transfer>
+
+            </div>
+
+        </div>
+
+
+        <el-dialog title="用户信息"
+                   :visible.sync="centerDialogVisible"
+                   width="500px"
+                   center>
+
+            <el-form :label-position="'left'" label-width="80px" :model="userAdd">
+                <el-form-item label="用户名">
+                    <el-input v-model="userAdd.name" :disabled="curdStatus"></el-input>
+                </el-form-item>
+                <el-form-item label="权限">
+                    <el-select v-model="userAdd.Dept" placeholder="请选择"  style="width:100%">
+                        <el-option  label="admin" value="admin" ></el-option>
+                        <el-option label="user" value="user"></el-option>
+                    </el-select>
+                    <!--<el-input v-model="userAdd.Dept"></el-input>-->
+                </el-form-item>
+                <el-form-item label="邮箱">
+                    <el-input v-model="userAdd.Email"></el-input>
+                </el-form-item>
+                <el-form-item label="密码">
+                    <el-input v-model="userAdd.Pass"></el-input>
+                </el-form-item>
+            </el-form>
+
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="centerDialogVisible = false">取 消</el-button>
+                <el-button type="primary" @click="usercurd">确 定</el-button>
+            </span>
+        </el-dialog>
+
+
+
+    </div>
+
+
+
+
+    <script>
+
+
+        var Vue = new Vue({
+            el: "#app",
+            data: {
+                input3: '',
+                users: [],
+                userinfo: {},
+                value: [],
+                permission: [],
+                centerDialogVisible: false,
+                curdStatus: false,
+                userAdd: {
+                    useID: '',
+                    name: '',
+                    Dept: '',
+                    Email: '',
+                    Pass: ''
+                }
+            },
+            created() {
+                this.SelectUser("")
+            },
+
+
+
+            methods: {
+
+                addUser() {
+                    this.userAdd.useID = ""
+                    this.userAdd.useID = ""
+                    this.userAdd.name = ""
+                    this.userAdd.Dept = ""
+                    this.userAdd.Email = ""
+                    this.userAdd.Pass = ""
+                    this.curdStatus = false
+                    this.centerDialogVisible = true
+                },
+                changeUser() {
+                    console.log(this.userinfo.UserID)
+                    if (!this.userinfo.UserID) {
+                        this.$message({
+                            message: '请先选择一条人员信息',
+                            type: 'warning'
+                        });
+
+                    } else {
+                        this.curdStatus = true
+                        this.userAdd.useID = this.userinfo.UserID
+                        this.userAdd.name = this.userinfo.username
+                        this.userAdd.Dept = this.userinfo.Dept
+                        this.userAdd.Email = this.userinfo.Email
+                        this.userAdd.Pass = this.userinfo.Pass
+                        this.centerDialogVisible = true
+                    }
+                },
+
+                deleteUser() {
+
+                    console.log(this.userinfo.UserID)
+                    if (!this.userinfo.UserID) {
+                        this.$message({
+                            message: '请先选择一条人员信息',
+                            type: 'warning'
+                        });
+
+                    } else {
+
+
+
+                        this.$confirm('确认删除该账号   用户名:' + this.userinfo.username + ', 是否继续?', '提示', {
+                            confirmButtonText: '确定',
+                            cancelButtonText: '取消',
+                            type: 'warning'
+                        }).then(() => {
+
+
+                            axios({
+                                method: 'post',
+                                url: '../User/userdelete',
+                                data: { UserID: this.userinfo.UserID }
+
+                            }).then(res=> {
+                                console.log(res.data);
+                                if (res.data != "-1") {
+
+                                    this.$message({
+                                        type: 'success',
+                                        message: '删除成功!'
+
+                                    });
+                                    this.centerDialogVisible = false;
+                                    this.SelectUser("")
+                                } else {
+
+                                    this.$message({
+                                        message: '删除失败',
+                                        type: 'warning'
+                                    });
+                                }
+
+
+                            })
+
+                        }).catch(() => {
+
+                        });
+
+
+
+
+
+                    }
+
+
+                },
+
+                usercurd() {
+
+                    axios({
+                        method: 'post',
+                        url: '../User/usercurd',
+                        data: this.userAdd
+
+                    }).then(res=> {
+                        console.log(res.data);
+
+                        if (res.data == "-1") {
+
+                            this.$message({
+                                message: '任务失败',
+                                type: 'warning'
+                            });
+                        } else if (res.data == "-2") {
+                            this.$message({
+                                message: '用户已经存在',
+                                type: 'warning'
+                            });
+                        }
+
+                        else {
+                            this.$message({
+                                message: '任务成功',
+                                type: 'success'
+                            });
+                            this.centerDialogVisible = false;
+                            this.SelectUser("")
+
+                        }
+
+                    })
+
+
+
+                },
+
+                SelectUser(val) {
+                    axios({
+                        method: 'post',
+                        url: '../User/SelectUser',
+                        data: { Username: val }
+
+                    }).then(res=> {
+                        console.log(res.data);
+
+                        this.users = res.data
+
+                        this.$refs.singleTable.setCurrentRow(this.users[0]);
+                    })
+                },
+                change(value, direction, movedKeys) {
+                    //console.log(this.value);
+                    this.value = value;
+
+                    axios({
+                        method: 'post',
+                        url: '../User/MangementAccess',
+                        data: { UserID: this.userinfo.UserID, direction: direction, MenuID: JSON.stringify(movedKeys) }
+
+                    }).then(res=> {
+                        console.log(res.data);
+
+
+
+                    })
+                    console.log(value, direction, movedKeys);
+
+                },
+
+                handleCurrentChange(val) {
+                    console.log(val)
+                    if (!val) {
+                        return;
+                    }
+                    this.userinfo = val;
+
+                    axios({
+                        method: 'post',
+                        url: '../User/UserAccess',
+                        data: { UserID: val.UserID }
+
+                    }).then(res=> {
+                        console.log(res.data);
+
+                        this.permission = res.data.menu;
+                        this.value = [];
+                        res.data.Access.map(res=> {
+                            this.value.push(res.MenuID)
+                        })
+
+                    })
+
+                },
+                seachUser() {
+                    this.SelectUser(this.input3)
+                }
+
+            }
+
+
+        })
+
+    </script>
+</body>
+
+
+</html>

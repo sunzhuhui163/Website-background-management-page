@@ -1,0 +1,602 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../scripts/vue.js"></script>
+
+    <script src="../scripts/axios.js"></script>
+    <link rel="stylesheet" href="../scripts/font-awesome/css/font-awesome.min.css">
+    <!-- 引入组件库 -->
+    <link href="../scripts/lib/theme-chalk/index.css" rel="stylesheet" />
+    <script src="../scripts/lib/index.js"></script>
+    <!-- 滚动条样式 -->
+    <!-- 滚动条样式 -->
+    <!--<script src="../scripts/dist/vuescroll.js"></script>
+    <script src="../scripts/dist/vuescroll-slide.js"></script>-->
+    <!-- 引入vuescroll-slide -->
+    <!--<script src="../scripts/dist/vuescroll-native.js"></script>-->
+    <!-- 引入vuescroll-native -->
+
+    <script src="../scripts/jquery.min.js"></script>
+    <script src="../scripts/qrcode.min.js"></script>
+    <script src="../scripts/jquery.PrintArea.js"></script>
+    <script src="../scripts/xlsx.full.min.js"></script>
+    <title>小瓶出库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding: 0 15px;
+        }
+
+        .el-form-item__label {
+            padding: 0 24px 0 0;
+        }
+
+        .el-tab-pane {
+            height: 90%;
+        }
+
+        .el-table th {
+            background-color: green;
+        }
+
+        .el-table thead {
+            color: white;
+        }
+
+        .el-tab-pane .el-form-item {
+            margin-bottom: 2px;
+        }
+
+        .el-icon-edit:before, .el-icon-delete:before {
+            font-size: 15px;
+            color: dodgerblue;
+        }
+
+        .el-col-12 {
+            height: 50px;
+        }
+
+        .el-dialog--center .el-dialog__body {
+            padding: 5px 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" >
+
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+
+            <el-tab-pane label="主菜单" name="third">
+
+                <el-button type="primary" size="mini" @click="addMain">新增</el-button>
+
+                <el-table :data="MainMenu" size="mini"
+                          border
+                          style="margin-top:15px;">
+                    <el-table-column prop="MainMenuID"
+                                     label="ID"
+                                    >
+                    </el-table-column>
+                    <el-table-column prop="name"
+                                     label="菜单名">
+                    </el-table-column>
+                    <el-table-column prop="icon"
+                                     label="图标"
+                                   >
+                    </el-table-column>
+
+                    <el-table-column label="操作" >
+                        <template slot-scope="scope">
+                            <i class="el-icon-edit" @click="changeMain(scope.row)"></i>
+
+                            <i class="el-icon-delete" style="margin-left:15px" @click="deleteMain(scope.row)"></i>
+                        </template>
+
+                    </el-table-column>
+
+                </el-table>
+           
+
+             
+            </el-tab-pane>
+
+
+            <el-tab-pane label="子菜单" name="fourth">
+
+                <el-button type="primary" size="mini" @click="addChild">新增</el-button>
+                <el-table :data="MenuInfo" size="mini"
+                          border
+                          style="margin-top:15px;">
+                    <el-table-column prop="MenuID"
+                                     label="ID">
+                    </el-table-column>
+                    <el-table-column prop="title"
+                                     label="子菜单名">
+                    </el-table-column>
+                    <el-table-column prop="content"
+                                     label="网页路径">
+                    </el-table-column>
+                    <el-table-column prop="icon"
+                                     label="图标">
+                    </el-table-column>
+                    <el-table-column prop="MMID"
+                                     label="主菜单">
+                    </el-table-column>
+
+
+                    <el-table-column label="操作">
+                        <template slot-scope="scope">
+                            <i class="el-icon-edit" @click="changeChild(scope.row)"></i>
+
+                            <i class="el-icon-delete" style="margin-left:15px" @click="deleteChild(scope.row)"></i>
+                        </template>
+
+                    </el-table-column>
+
+
+
+
+                </el-table>
+
+
+            </el-tab-pane>
+
+
+
+        </el-tabs>
+
+
+        <el-dialog title="主菜单管理" :visible.sync="masterMenu" center width="400px" :close-on-click-modal="false">
+      
+            <el-form :model="MasterAdd"  ref="MasterAdd">
+
+                <el-row>
+                    <el-col :span="24">
+                        <el-form-item label="菜单名" label-width="120px" >
+                            <el-input size="mini" v-model="MasterAdd.name" style="width:220px"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="24">
+                        <el-form-item label="图标" label-width="120px" >
+                            <el-input size="mini" v-model="MasterAdd.icon" style="width:220px"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+             
+
+
+
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="masterMenu = false" size="mini">取 消</el-button>
+                <el-button type="primary"  size="mini" @click="addMainData" >确 定</el-button>
+            </div>
+
+        </el-dialog>
+
+
+        <el-dialog title="子菜单管理" :visible.sync="childMenu" center width="400px" :close-on-click-modal="false">
+   
+
+            <el-form :model="ChildAdd" ref="ChildAdd">
+
+                <el-row>
+                    <el-col :span="24">
+                        <el-form-item label="子菜单名" label-width="120px">
+                            <el-input size="mini" v-model="ChildAdd.title" style="width:220px"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="24">
+                        <el-form-item label="图标" label-width="120px">
+                            <el-input size="mini" v-model="ChildAdd.icon" style="width:220px"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+
+                <el-row>
+                    <el-col :span="24">
+                        <el-form-item label="网页路径" label-width="120px">
+                            <el-input size="mini" v-model="ChildAdd.content" style="width:220px"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="24">
+                        <el-form-item label="主菜单" label-width="120px">
+                         
+
+                            <el-select v-model="ChildAdd.MMID" placeholder="请选择" style="width:220px" size="mini">
+                                <el-option v-for="item in MainMenu"
+                                           :key="item.MainMenuID"
+                                           :label="item.name"
+                                           :value="item.MainMenuID">
+                                </el-option>
+                            </el-select>
+
+
+
+
+
+
+
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+
+
+
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="childMenu = false" size="mini">取 消</el-button>
+                <el-button type="primary" size="mini" @click="addChildData">确 定</el-button>
+            </div>
+
+        </el-dialog>
+
+
+
+
+    </div>
+
+
+    <script>
+
+
+
+        function  refresh() {
+            location.reload(true)
+            console.log("刷新拉。。。。input")
+        }
+
+
+        var vue = new Vue({
+            el: "#app",
+            data: {
+               
+                MasterAdd: {
+                    MainMenuID:0,
+                    name:'',
+                    icon:''
+                },
+                ChildAdd: {
+                    MenuID:0,
+                    title: '',
+                    icon: '',
+                    content: '',
+                    MMID:''
+                },
+            
+                masterMenu:false,
+                childMenu:false,
+                activeName: 'third',
+                MainMenu:[],
+                MenuInfo:[],
+   
+            },
+           
+            created() {
+
+
+                this.mainMenu()
+
+
+
+            },
+            mounted() {
+           
+            
+            },
+            methods: {
+
+                 
+                mainMenu(){
+
+                    axios({
+                        method: 'post',
+                        url: '../User/MainMenu',
+                      
+
+                    }).then(res=> {
+                        console.log(res.data);
+                        if (res.data.res == -2) {
+
+                            this.$notify.error({
+                                title: '异常',
+                                message: '权限异常'
+                            });
+
+
+                        } else {
+                            this.MainMenu = res.data.main
+                            this.MenuInfo = res.data.children
+                        }
+                      
+                    })
+
+                },
+
+                addChild(){
+
+                    this.childMenu = true
+                    this.ChildAdd.title = ''
+                    this.ChildAdd.icon = ''
+                    this.ChildAdd.content = ''
+                    this.ChildAdd.MMID = ''
+                    this.ChildAdd.MenuID =0
+                },
+                addMain(){
+                    this.masterMenu = true
+
+                    this.MasterAdd.name = ''
+                    this.MasterAdd.icon = ''
+                    this.MasterAdd.MainMenuID =0
+               },
+
+                changeChild(val) {
+                    console.log(val)
+                    this.childMenu = true
+                    this.ChildAdd.title = val.title
+                    this.ChildAdd.icon = val.icon
+                    this.ChildAdd.content = val.content
+                    this.ChildAdd.MMID = val.MMID
+                    this.ChildAdd.MenuID = val.MenuID
+                    
+                },
+                changeMain(val) {
+                    console.log(val)
+                    this.masterMenu = true
+                    this.MasterAdd.name = val.name
+                    this.MasterAdd.icon = val.icon
+                    this.MasterAdd.MainMenuID = val.MainMenuID
+                },
+
+
+
+
+
+
+
+
+
+                addMainData() {
+                  
+                    if (this.MasterAdd.name == '' || this.MasterAdd.icon == '') {
+
+                        this.$notify.error({
+                            title: '错误',
+                            message: '请填写所有信息'
+                        });
+                        return
+                    }
+
+                    axios({
+                        method: 'post',
+                        url: '../User/addMainData',
+                        data: { MainMenuID:  this.MasterAdd.MainMenuID, name: this.MasterAdd.name, icon: this.MasterAdd.icon }
+
+                    }).then(res=> {
+                        console.log(res.data);
+                        if (res.data.res == -2) {
+
+                            this.$notify.error({
+                                title: '异常',
+                                message: '权限异常'
+                            });
+                      
+                            this.masterMenu = false
+
+                        } else if (res.data.res == -1) {
+
+                            this.$notify.error({
+                                title: '错误',
+                                message: '添加失败！'
+                            });
+                       
+                            this.masterMenu = false
+                        } else {
+
+                            this.mainMenu()
+                            this.masterMenu = false
+                        }
+
+                    })
+
+
+
+                },
+                addChildData() {
+
+                    if (this.ChildAdd.title == '' || this.ChildAdd.icon == ''|| this.ChildAdd.content == '' ||this.ChildAdd.MMID == '') {
+
+                        this.$notify.error({
+                            title: '错误',
+                            message: '请填写所有信息'
+                        });
+                        return
+                    }
+
+                 
+            
+                    console.log(this.ChildAdd)
+
+
+                    axios({
+                        method: 'post',
+                        url: '../User/addChildData',
+                        data: { MenuID:  this.ChildAdd.MenuID, title: this.ChildAdd.title, icon: this.ChildAdd.icon, content: this.ChildAdd.content, MMID: this.ChildAdd.MMID }
+
+                    }).then(res=> {
+                        console.log(res.data);
+                        if (res.data.res == -2) {
+
+                            this.$notify.error({
+                                title: '异常',
+                                message: '权限异常'
+                            });
+                            this.childMenu = false
+
+                        } else if (res.data.res == -1) {
+
+                            this.$notify.error({
+                                title: '错误',
+                                message: '添加失败！'
+                            });
+                            this.childMenu = false
+                        } else {
+                            this.mainMenu()
+                            this.childMenu = false
+                        }
+
+                    })
+
+                },
+
+                deleteMain(val) {
+
+
+
+                    this.$confirm('此操作将删除该数据, 是否继续?', '提示', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        type: 'warning'
+                    }).then(() => {
+
+
+                        axios({
+                            method: 'post',
+                            url: '../User/deleteMain',
+                            data: { MainMenuID: val.MainMenuID }
+
+                        }).then(res=> {
+                            console.log(res.data);
+                            if (res.data.res == -2) {
+
+                                this.$notify.error({
+                                    title: '异常',
+                                    message: '权限异常'
+                                });
+
+
+                            } else if (res.data.res == -1) {
+
+                                this.$notify.error({
+                                    title: '错误',
+                                    message: '删除失败！'
+                                });
+                            } else if (res.data.res == -3) {
+
+                                this.$notify.error({
+                                    title: '错误',
+                                    message: '子菜单有指向此主菜单的连接，不能删除！'
+                                });
+                            } else {
+                                this.$message({
+                                    type: 'success',
+                                    message: '删除成功!'
+                                });
+
+                                this.mainMenu()
+
+                            }
+
+                        })
+
+
+                    })
+
+
+
+
+
+
+
+
+
+
+
+                },
+                deleteChild(val) {
+
+
+
+                    this.$confirm('此操作将删除该数据, 是否继续?', '提示', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        type: 'warning'
+                    }).then(() => {
+
+
+
+
+                        axios({
+                            method: 'post',
+                            url: '../User/deleteChild',
+                            data: { MenuID: val.MenuID }
+
+                        }).then(res=> {
+                            console.log(res.data);
+                            if (res.data.res == -2) {
+
+                                this.$notify.error({
+                                    title: '异常',
+                                    message: '权限异常'
+                                });
+
+
+                            }  else if (res.data.res == -1) {
+
+                                this.$notify.error({
+                                    title: '错误',
+                                    message: '删除失败！'
+                                });
+                            }
+
+                            else {
+                                this.$message({
+                                    type: 'success',
+                                    message: '删除成功!'
+                                });
+
+                                this.mainMenu()
+                           
+                            }
+
+                        })
+
+                    })
+
+                },
+
+  
+     
+         
+        
+ 
+
+      
+
+                handleClick(tab, event) {
+                    console.log(tab, event);
+                },
+
+             
+
+                  isInteger(obj) {
+                     return typeof obj === 'number' && obj%1 === 0
+                            },
+
+            }
+
+
+
+
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,681 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "552769",
+      "name": "汽车制造",
+      "font_class": "qichezhizao",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "568546",
+      "name": "生产",
+      "font_class": "shengchan",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "833695",
+      "name": "搜狐",
+      "font_class": "souhu",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "1014024",
+      "name": "维修工管理",
+      "font_class": "weixiugongguanli",
+      "unicode": "e80d",
+      "unicode_decimal": 59405
+    },
+    {
+      "icon_id": "1190643",
+      "name": "人员",
+      "font_class": "renyuan",
+      "unicode": "e7e6",
+      "unicode_decimal": 59366
+    },
+    {
+      "icon_id": "1713574",
+      "name": "数据",
+      "font_class": "shuju",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "1962953",
+      "name": "icon_物流管理",
+      "font_class": "icon_wuliuguanli",
+      "unicode": "e87b",
+      "unicode_decimal": 59515
+    },
+    {
+      "icon_id": "2593523",
+      "name": "物流码",
+      "font_class": "wuliuma",
+      "unicode": "e67f",
+      "unicode_decimal": 59007
+    },
+    {
+      "icon_id": "2768293",
+      "name": "数据",
+      "font_class": "shuju1",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "3130215",
+      "name": "人员信息",
+      "font_class": "renyuanxinxi",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "3199586",
+      "name": "人员合同",
+      "font_class": "drxx24",
+      "unicode": "e711",
+      "unicode_decimal": 59153
+    },
+    {
+      "icon_id": "3216543",
+      "name": "工业设施",
+      "font_class": "gongyesheshi",
+      "unicode": "e670",
+      "unicode_decimal": 58992
+    },
+    {
+      "icon_id": "3377536",
+      "name": "人员管理",
+      "font_class": "drxx91",
+      "unicode": "e72a",
+      "unicode_decimal": 59178
+    },
+    {
+      "icon_id": "3729389",
+      "name": "维修工人",
+      "font_class": "weixiugongren",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "3944783",
+      "name": "数据",
+      "font_class": "icon-test",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "3956111",
+      "name": "全屋定制生产",
+      "font_class": "kujialeqiyezhan_quanwudingzhishengchan",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    },
+    {
+      "icon_id": "4192844",
+      "name": "质量检验",
+      "font_class": "zhiliangjianyan",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "4751438",
+      "name": "咨询人员",
+      "font_class": "zixunrenyuan",
+      "unicode": "e7dc",
+      "unicode_decimal": 59356
+    },
+    {
+      "icon_id": "4829676",
+      "name": "工厂",
+      "font_class": "gongchang",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "4946359",
+      "name": "数据",
+      "font_class": "icon-test1",
+      "unicode": "e6ee",
+      "unicode_decimal": 59118
+    },
+    {
+      "icon_id": "5098253",
+      "name": "icon_新浪-纯色logo",
+      "font_class": "icon_xinlang-chunselogo",
+      "unicode": "e65e",
+      "unicode_decimal": 58974
+    },
+    {
+      "icon_id": "5122103",
+      "name": "物流查询",
+      "font_class": "wuliuchaxun",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "5252508",
+      "name": "数据",
+      "font_class": "shuju2",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "5262918",
+      "name": "数据",
+      "font_class": "shuju3",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "5484117",
+      "name": "可再生能源",
+      "font_class": "kezaishengnengyuan",
+      "unicode": "e76f",
+      "unicode_decimal": 59247
+    },
+    {
+      "icon_id": "5715220",
+      "name": "数据",
+      "font_class": "shuju4",
+      "unicode": "e673",
+      "unicode_decimal": 58995
+    },
+    {
+      "icon_id": "5738315",
+      "name": "物流配送-43",
+      "font_class": "wuliupeisong-",
+      "unicode": "ecf6",
+      "unicode_decimal": 60662
+    },
+    {
+      "icon_id": "6115076",
+      "name": "工厂",
+      "font_class": "zhaogongchang",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "6264955",
+      "name": "能源",
+      "font_class": "nengyuan",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "6590412",
+      "name": "工厂",
+      "font_class": "16",
+      "unicode": "e70c",
+      "unicode_decimal": 59148
+    },
+    {
+      "icon_id": "6894484",
+      "name": "商务人员",
+      "font_class": "shangwurenyuan",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "7087610",
+      "name": "人员离开",
+      "font_class": "yuangongchelianglika",
+      "unicode": "e65d",
+      "unicode_decimal": 58973
+    },
+    {
+      "icon_id": "7087612",
+      "name": "人员进入",
+      "font_class": "yuangongcheliangjinr",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    },
+    {
+      "icon_id": "7456562",
+      "name": "人员关系",
+      "font_class": "renyuanguanxi",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "7466498",
+      "name": "货车，快递，配送，物流",
+      "font_class": "huabanfuben",
+      "unicode": "e691",
+      "unicode_decimal": 59025
+    },
+    {
+      "icon_id": "7466539",
+      "name": "电动车，新能源车，充电",
+      "font_class": "huabanfuben1",
+      "unicode": "e695",
+      "unicode_decimal": 59029
+    },
+    {
+      "icon_id": "7519143",
+      "name": "工业",
+      "font_class": "gongye",
+      "unicode": "e671",
+      "unicode_decimal": 58993
+    },
+    {
+      "icon_id": "7741468",
+      "name": "物流",
+      "font_class": "huabanfuben2",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "7992454",
+      "name": "生产",
+      "font_class": "shengchan-",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "8206781",
+      "name": "能源应用中心",
+      "font_class": "nyyyzx",
+      "unicode": "e762",
+      "unicode_decimal": 59234
+    },
+    {
+      "icon_id": "8513884",
+      "name": "物流",
+      "font_class": "wuliu",
+      "unicode": "e692",
+      "unicode_decimal": 59026
+    },
+    {
+      "icon_id": "9011932",
+      "name": "生产",
+      "font_class": "shengchan1",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "10202013",
+      "name": "物流",
+      "font_class": "wuliu1",
+      "unicode": "e8e3",
+      "unicode_decimal": 59619
+    },
+    {
+      "icon_id": "10589771",
+      "name": "生产平台_工程对象_jurassic",
+      "font_class": "jurassic_production-platform",
+      "unicode": "e682",
+      "unicode_decimal": 59010
+    },
+    {
+      "icon_id": "11644467",
+      "name": "公寓维修",
+      "font_class": "gongyuweixiu",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "11654094",
+      "name": "数据",
+      "font_class": "shuju5",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    },
+    {
+      "icon_id": "11742223",
+      "name": "云谷头条",
+      "font_class": "tubiaozhizuomoban",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "11851579",
+      "name": "生产线",
+      "font_class": "shengchanxian",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "11881766",
+      "name": "维修报表",
+      "font_class": "weixiubaobiao",
+      "unicode": "e67e",
+      "unicode_decimal": 59006
+    },
+    {
+      "icon_id": "12319739",
+      "name": "制造业",
+      "font_class": "zhizaoye",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "12498379",
+      "name": "20生产",
+      "font_class": "shengchan2",
+      "unicode": "e666",
+      "unicode_decimal": 58982
+    },
+    {
+      "icon_id": "12560926",
+      "name": "物流证卡",
+      "font_class": "wuliuzhengka",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
+      "icon_id": "13525745",
+      "name": "47-工业互联网",
+      "font_class": "-gongyehulianwang",
+      "unicode": "e723",
+      "unicode_decimal": 59171
+    },
+    {
+      "icon_id": "13641836",
+      "name": "数据",
+      "font_class": "shuju6",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "14004089",
+      "name": "传统工业",
+      "font_class": "chuantonggongye",
+      "unicode": "e693",
+      "unicode_decimal": 59027
+    },
+    {
+      "icon_id": "14004119",
+      "name": "智慧工业",
+      "font_class": "zhihuigongye",
+      "unicode": "e69c",
+      "unicode_decimal": 59036
+    },
+    {
+      "icon_id": "14004128",
+      "name": "制造业",
+      "font_class": "zhizaoye1",
+      "unicode": "e69f",
+      "unicode_decimal": 59039
+    },
+    {
+      "icon_id": "14033446",
+      "name": "数据",
+      "font_class": "shuju7",
+      "unicode": "e753",
+      "unicode_decimal": 59219
+    },
+    {
+      "icon_id": "14055556",
+      "name": "百度",
+      "font_class": "baidu",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "14095007",
+      "name": "生产制造",
+      "font_class": "shengchanzhizao",
+      "unicode": "e551",
+      "unicode_decimal": 58705
+    },
+    {
+      "icon_id": "14113883",
+      "name": "物流",
+      "font_class": "wuliu2",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "14626435",
+      "name": "人员添加",
+      "font_class": "renyuantianjia",
+      "unicode": "e6d8",
+      "unicode_decimal": 59096
+    },
+    {
+      "icon_id": "14927315",
+      "name": "工厂 (1)",
+      "font_class": "gongchang1",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "15593039",
+      "name": "物流，物流运输，",
+      "font_class": "wuliuwuliuyunshu",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "16481317",
+      "name": "数据",
+      "font_class": "shuju8",
+      "unicode": "e6a6",
+      "unicode_decimal": 59046
+    },
+    {
+      "icon_id": "16560697",
+      "name": "智能科技-icon-半导体制造",
+      "font_class": "zhinengkeji-icon-16",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "16644170",
+      "name": "维修",
+      "font_class": "weixiu",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "16670804",
+      "name": "故障维修",
+      "font_class": "guzhangweixiu",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "17618975",
+      "name": "人员异常",
+      "font_class": "renyuanyichang",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "17619289",
+      "name": "生产制造",
+      "font_class": "tubiaozhizuomoban-116",
+      "unicode": "e633",
+      "unicode_decimal": 58931
+    },
+    {
+      "icon_id": "17720193",
+      "name": "物流摆放",
+      "font_class": "wuliubaifang",
+      "unicode": "e6c4",
+      "unicode_decimal": 59076
+    },
+    {
+      "icon_id": "17720197",
+      "name": "物流邮件",
+      "font_class": "wuliuyoujian",
+      "unicode": "e6c7",
+      "unicode_decimal": 59079
+    },
+    {
+      "icon_id": "17720198",
+      "name": "物流日历",
+      "font_class": "wuliurili",
+      "unicode": "e6c8",
+      "unicode_decimal": 59080
+    },
+    {
+      "icon_id": "17720202",
+      "name": "物流海运",
+      "font_class": "wuliuhaiyun",
+      "unicode": "e6c9",
+      "unicode_decimal": 59081
+    },
+    {
+      "icon_id": "17720206",
+      "name": "物流定位",
+      "font_class": "wuliudingwei",
+      "unicode": "e6ca",
+      "unicode_decimal": 59082
+    },
+    {
+      "icon_id": "17811497",
+      "name": "ic_维修服务",
+      "font_class": "ic_weixiufuwu",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "18051053",
+      "name": "生活维修",
+      "font_class": "shenghuoweixiu",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "18398787",
+      "name": "维修",
+      "font_class": "maintain-01",
+      "unicode": "e6fe",
+      "unicode_decimal": 59134
+    },
+    {
+      "icon_id": "18462334",
+      "name": "011-国际物流",
+      "font_class": "011-guojiwuliu",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "18462345",
+      "name": "014-物流",
+      "font_class": "014-wuliu",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "18781538",
+      "name": "质量管理",
+      "font_class": "zhiliangguanli",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "18781542",
+      "name": "质量管理1",
+      "font_class": "zhiliangguanli1",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "18803818",
+      "name": "工作人员",
+      "font_class": "dagongren",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "18823454",
+      "name": "菜单-生产设备",
+      "font_class": "shengchanshebei",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "18883438",
+      "name": "Bing",
+      "font_class": "Bing",
+      "unicode": "e945",
+      "unicode_decimal": 59717
+    },
+    {
+      "icon_id": "18986516",
+      "name": "人员入项",
+      "font_class": "renyuanruxiang",
+      "unicode": "e64b",
+      "unicode_decimal": 58955
+    },
+    {
+      "icon_id": "19942171",
+      "name": "智能制造",
+      "font_class": "zhinengzhizao",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "20154595",
+      "name": "质量指标",
+      "font_class": "zhiliangkongzhizhibiao",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "20190070",
+      "name": "擅长",
+      "font_class": "shanchang",
+      "unicode": "e67a",
+      "unicode_decimal": 59002
+    },
+    {
+      "icon_id": "20190071",
+      "name": "培训",
+      "font_class": "peixun",
+      "unicode": "e67b",
+      "unicode_decimal": 59003
+    },
+    {
+      "icon_id": "20190072",
+      "name": "新闻",
+      "font_class": "xinwen",
+      "unicode": "e67c",
+      "unicode_decimal": 59004
+    },
+    {
+      "icon_id": "20190074",
+      "name": "资料",
+      "font_class": "ziliao",
+      "unicode": "e67d",
+      "unicode_decimal": 59005
+    },
+    {
+      "icon_id": "20190075",
+      "name": "网络服务",
+      "font_class": "wangluofuwu",
+      "unicode": "e680",
+      "unicode_decimal": 59008
+    },
+    {
+      "icon_id": "20190078",
+      "name": "团队",
+      "font_class": "tuandui",
+      "unicode": "e681",
+      "unicode_decimal": 59009
+    },
+    {
+      "icon_id": "20190152",
+      "name": "定位",
+      "font_class": "dingwei",
+      "unicode": "e683",
+      "unicode_decimal": 59011
+    },
+    {
+      "icon_id": "20190225",
+      "name": "驾驶",
+      "font_class": "jiashi",
+      "unicode": "e684",
+      "unicode_decimal": 59012
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="scripts/vue.js"></script>
+
+    <script src="scripts/axios.js"></script>
+    <link rel="stylesheet" href="scripts/font-awesome/css/font-awesome.min.css">
+    <!-- 引入组件库 -->
+    <link href="scripts/lib/theme-chalk/index.css" rel="stylesheet" />
+    <script src="scripts/lib/index.js"></script>
+    <!-- 滚动条样式 -->
+    <!-- 滚动条样式 -->
+    <script src="scripts/dist/vuescroll.js"></script>
+    <script src="scripts/dist/vuescroll-slide.js"></script>
+    <!-- 引入vuescroll-slide -->
+
+    <script src="scripts/dist/vuescroll-native.js"></script>
+    <!-- 引入vuescroll-native -->
+    <link href="scripts/dist/vuescroll.css" rel="stylesheet" />
+    <link href="svg/iconfont.css" rel="stylesheet" />
+    <script src="svg/iconfont.js"></script>
+    <title></title>
+    <style>
+        .links:hover {
+            box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <div id="app">
+
+
+      
+
+
+        <div style="margin-top:30px">
+
+            <div v-for="(menus,index) in editableTabs" :key="index" :index="menus.name" style="position:relative;border-top:1px solid grey;margin-bottom:40px;padding-top:20px">
+
+
+                <div style="position:absolute;top:-15px;left:10px">
+
+                    <div style="font-size:20px;background-color:white">{{menus.name}}</div>
+                </div>
+
+
+
+
+                <div v-for="(menu,index) in menus.children" :key="index" style="display:inline-block;width:150px;height:120px;text-align:center;padding:10px;" class="links" @click="links(menu.title,menu.name,menu.content,menu.icon)">
+                    <div style="margin-bottom:20px">
+                       
+                        <svg class="icon" aria-hidden="true" style="font-size:80px">
+                            <use :xlink:href="menu.icon"></use>
+                        </svg>
+                    </div>
+                    <div>{{menu.name}}  </div>
+
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <script>
+
+
+
+
+        var v = new Vue({
+            el: "#app",
+            data: {
+
+
+                editableTabs: [],
+
+
+
+
+                form: {
+                    username: '',
+                    password: ''
+                }
+
+
+
+
+
+
+            },
+            created() {
+
+
+                //this.form.username= this.getCookie('username'),
+                //  this.form.password= this.getCookie('password')
+
+                this.Login()
+
+
+            },
+            methods: {
+
+                getCookie(name) {
+                    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+
+                    if (arr = document.cookie.match(reg))
+
+                        return unescape(arr[2]);
+                    else
+                        return null;
+                },
+
+                Login() {
+
+                    axios({
+                        method: 'post',
+                        url: '../User/getCookies',
+                        //data: { username: this.getCookie('username'), password: this.getCookie('password') }
+
+                    }).then(res=> {
+                        console.log(res.data);
+
+                        if (res.data.isSuccess == 1) {
+                            this.$message.error('账号或密码错误');
+                            console.log("123")
+                        } else {
+
+                            this.editableTabs = res.data
+
+
+
+
+                        }
+
+
+
+                    })
+
+
+
+
+
+                },
+
+                links(file, name, content, icon) {
+                    //  window.parent.addTab(file, name, content, icon)
+                    parent.v.links(file, name, content, icon);
+                },
+
+
+            }
+
+        })
+    </script>
+</body>
+
+
+</html>
